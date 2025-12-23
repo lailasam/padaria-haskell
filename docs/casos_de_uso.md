@@ -28,11 +28,11 @@ Sessão autenticada iniciada; acesso liberado ao menu principal.
 5. O usuário visualiza o dashboard principal.
 
 **Fluxo de exceções:**
-FE01 – Credenciais inválidas
-O usuário insere o email e a senha e clica em "Entrar", mas visualiza a mensagem "Credenciais inválidas" e permanece na tela de login. 
+- FE01 – Credenciais inválidas
+  - O usuário insere o email e a senha e clica em "Entrar", mas visualiza a mensagem "Credenciais inválidas" e permanece na tela de login. 
 
 **Regras de negócio:**
-RN01: Somente um usuário cadastrado consegue acessar a área restrita do sistema.
+- RN01: Somente um usuário cadastrado consegue acessar a área restrita do sistema.
 
 ### UC02: Efetuar logout
 
@@ -55,8 +55,8 @@ Sessão finalizada; usuário é redirecionado para a tela de login.
 4. O usuário é redirecionado para a tela de login.
 
 **Fluxo alternativo:**
-FA01 – Usuário deseja cancelar o logout
-O usuário clica em "Sair", mas desiste antes de confirmar. Ao visualizar a tela de confirmação, clica em "Cancelar" e permanece na tela anterior.
+- FA01 – Usuário deseja cancelar o logout
+  - O usuário clica em "Sair", mas desiste antes de confirmar. Ao visualizar a tela de confirmação, clica em "Cancelar" e permanece na tela anterior.
 
 ### UC03: Cadastrar usuário
 
@@ -80,23 +80,23 @@ Um novo registro de usuário é criado no banco de dados.
 5. O gerente clica em "Salvar".
 
 **Fluxo alternativo:**
-FA01 – Cancelar cadastro
-O gerente clica em "Cancelar" a qualquer momento e retorna à lista de usuários sem salvar os dados.
+- FA01 – Cancelar cadastro
+  - O gerente clica em "Cancelar" a qualquer momento e retorna à lista de usuários sem salvar os dados.
 
 **Fluxo de exceções:**
-FE01 – Email já cadastrado
-Se o e-mail inserido já existir no sistema, é exibida a mensagem "Este e-mail já está em uso" e o salvamento é impedido.
+- FE01 – Email já cadastrado
+  - Se o e-mail inserido já existir no sistema, é exibida a mensagem "Este e-mail já está em uso" e o salvamento é impedido.
 
-FE02 – CPF já cadastrado
-Se o CPF inserido já existir no sistema, é exibida a mensagem "Este CPF já está em uso" e o salvamento é impedido.
+- FE02 – CPF já cadastrado
+  - Se o CPF inserido já existir no sistema, é exibida a mensagem "Este CPF já está em uso" e o salvamento é impedido.
 
-FE03 – Campos obrigatórios em branco
-O gerente tenta salvar o novo usuário deixando campos obrigatórios em branco. A mensagem "Todos os campos obrigatórios devem ser preenchidos" é exibida e o salvamento é impedido.
+- FE03 – Campos obrigatórios em branco
+  - O gerente tenta salvar o novo usuário deixando campos obrigatórios em branco. A mensagem "Todos os campos obrigatórios devem ser preenchidos" é exibida e o salvamento é impedido.
 
 **Regras de negócio:**
-RN02: Os emails cadastrados devem ser únicos.
-RN03: Os CPFs cadastrados devem ser únicos.
-RN04: Somente os gerentes podem cadastrar novos usuários.
+- RN02: Os emails cadastrados devem ser únicos.
+- RN03: Os CPFs cadastrados devem ser únicos.
+- RN04: Somente os gerentes podem cadastrar novos usuários.
 
 ### UC04: Editar perfil de usuário
 
@@ -118,11 +118,11 @@ Os dados do usuário são atualizados.
 3. O usuário clica em "Salvar".
 
 **Fluxo alternativo:**
-FA01 – Cancelar edição
-O usuário clica em "Cancelar" antes da confirmação e permanece na tela de edição.
+- FA01 – Cancelar edição
+  - O usuário clica em "Cancelar" antes da confirmação e permanece na tela de edição.
 
 **Regras de negócio:**
-RN05: Somente os gerentes podem editar perfis de usuários que não sejam o seu próprio.
+- RN05: Somente os gerentes podem editar perfis de usuários que não sejam o seu próprio.
 
 ### UC05: Deletar perfil de usuário
 
@@ -145,11 +145,11 @@ Um perfil de usuário é inativado.
 4. O usuário é redirecionado para a tela de login.
 
 **Fluxo alternativo:**
-FA01 – Cancelar deleção
-O usuário clica em "Cancelar" antes da confirmação e permanece na tela de perfil.
+- FA01 – Cancelar deleção
+  - O usuário clica em "Cancelar" antes da confirmação e permanece na tela de perfil.
 
 **Regras de negócio:**
-RN06: Somente os gerentes podem deletar um perfil que não seja o seu próprio.
+- RN06: Somente os gerentes podem deletar um perfil que não seja o seu próprio.
 
 ### UC06: Visualizar perfil de usuário
 
@@ -170,26 +170,169 @@ Informações de um usuário são exibidas.
 2. O usuário visualiza informações.
 
 **Regras de negócio:**
-RN06: Somente os gerentes podem visualizar dados pessoais de outros usuários.
+- RN07: Somente os gerentes podem visualizar dados pessoais de outros usuários.
 
 ---
 ## 🍞 Módulo 2: Gestão de produtos
 
-## UC07: Cadastrar produto
-## UC08: Editar produto
-## UC09: Inativar produto
-## UC10: Visualizar catálogo de produtos
+### UC07: Cadastrar produto
+
+**Descrição:**
+Permite ao gerente incluir novos itens que serão vendidos diretamente ao consumidor final.
+
+**Atores:**
+Gerente.
+
+**Pré-condições:**
+O usuário do tipo gerente deve estar autenticado no sistema.
+
+**Pós-condições:**
+Produto registrado com identificador único e disponível no catálogo.
+
+**Fluxo principal:**
+1. O gerente acessa a tela "Catálogo de Produtos".
+2. O gerente clica em "Novo Produto".
+3. O gerente preenche: Nome, Preço de Venda e código identificador.
+4. O gerente clica em "Salvar".
+
+**Fluxo alternativo:**
+- FA01 – Cancelar cadastro
+  - O gerente clica em "Cancelar" a qualquer momento e retorna ao catálogo de produtos.
+  
+**Fluxo de exceções:**
+- FE01 – Identificador duplicado
+  - O gerente tenta salvar o novo produto com um identificador existente, mas recebe a mensagem de erro "Identificador já cadastrado" e o salvamento é impedido.
+
+- FE01 – Campos obrigatórios em branco
+  - O gerente tenta salvar o novo produto com um campo obrigatório em branco, mas recebe a mensagem de erro "Todos os campos obrigatórios devem ser preenchidos" e o salvamento é impedido.
+    
+**Regras de negócio:**
+- RN08: Somente os gerentes podem cadastrar novos produtos.
+- RN09: O identificador deve seguir o padrão definido, para facilitar a busca rápida.
+- RN10: Não deve ser permitido cadastrar produtos com preço igual ou inferior a zero.
+
+### UC08: Editar produto
+
+**Descrição:**
+Permite a atualização de informações comerciais de um produto.
+
+**Atores:**
+Gerente.
+
+**Pré-condições:**
+O usuário do tipo gerente deve estar autenticado no sistema.
+
+**Pós-condições:**
+Informações do produto são atualizadas no catálogo.
+
+**Fluxo principal:**
+1. O gerente acessa a tela "Catálogo de Produtos".
+2. O gerente clica em um produto da lista.
+3. O gerente clica em "Editar".
+4. O gerente altera os dados desejados.
+5. O gerente clica em "Salvar".
+
+**Fluxo alternativo:**
+- FA01 – Cancelar edição
+  - O gerente clica em "Cancelar" a qualquer momento e retorna ao catálogo de produtos.
+    
+**Regras de negócio:**
+- RN11: Ao alterar o preço, o sistema deve registrar a data da alteração para histórico de preços.
+
+### UC09: Inativar produto
+
+**Descrição:**
+Permite remover um produto da disponibilidade de venda sem excluir seus dados históricos.
+
+**Atores:**
+Gerente.
+
+**Pré-condições:**
+O usuário do tipo gerente deve estar autenticado no sistema.
+
+**Pós-condições:**
+Produto é inativado para venda.
+
+**Fluxo principal:**
+1. O gerente acessa a tela "Catálogo de Produtos".
+2. O gerente clica em um produto da lista.
+3. O gerente clica em "Inativar".
+4. O gerente clica em "Confirmar".
+
+**Fluxo alternativo:**
+- FA01 – Cancelar inativação
+  - O gerente clica em "Cancelar" a qualquer momento e retorna ao catálogo de produtos.
+    
+**Regras de negócio:**
+- RN12: Um produto inativo não pode ser selecionado na tela de venda, mas continua aparecendo em relatórios de vendas passadas.
+
+### UC10: Visualizar catálogo de produtos
+
+**Descrição:**
+Permite a consulta rápida de todos os itens disponíveis na padaria.
+
+**Atores:**
+Gerente, vendedor, padeiro.
+
+**Pré-condições:**
+O usuário deve estar autenticado no sistema.
+
+**Pós-condições:**
+Lista de produtos é exibida.
+
+**Fluxo principal:**
+1. O usuário acessa a tela "Catálogo de Produtos".
+2. O usuário visualiza lista com todos os produtos.
+
+**Fluxo alternativo:**
+- FA01 – Cancelar inativação
+  - O gerente clica em "Cancelar" a qualquer momento e retorna ao catálogo de produtos.
+
 ---
 ## 🧂 Módulo 3: Gestão de ingredientes
 
 ## UC07: Cadastrar ingrediente
+
+**Descrição:**
+Permite registrar as matérias-primas que serão utilizadas na produção.
+
+**Atores:**
+Gerente.
+
+**Pré-condições:**
+O usuário do tipo gerente deve estar autenticado no sistema.
+
+**Pós-condições:**
+Ingrediente disponível para ser vinculado a receitas e para registros de compra.
+
+**Fluxo principal:**
+1. O gerente acessa a tela de "Gestão de Insumos".
+2. O gerente clica em "Novo Ingrediente".
+3. O gerente preenche: Nome, Unidade de Medida e Estoque Mínimo.
+4. O gerente clica em "Salvar".
+
+**Fluxo alternativo:**
+- FA01 – Cancelar cadastro
+  - O gerente clica em "Cancelar" a qualquer momento e retorna à tela de gestão de insumos.
+  
+**Fluxo de exceções:**
+- FE01 – Nome duplicado
+  - Ao tentar cadastrar um ingrediente com nome já registrado, a mensagem "Nome já cadastrado" é exibida e o sistema impede o cadastro para evitar confusão no estoque.
+
+- FE02 – Campos obrigatórios em branco
+  - Ao tentar salvar o cadastro deixando campos obrigatórios em branco, a mensagem de erro "Todos os campos obrigatórios devem ser preenchidos" é exibida e o salvamento é impedido.
+
+**Regras de negócio:**
+- RN13: O sistema deve oferecer uma lista pré-definida de unidades de medida para manter a padronização e facilitar cálculos futuros.
+- RN14: O valor do estoque mínimo deve ser obrigatoriamente maior ou igual a zero.
+  
 ## UC08: Editar ingrediente
 ## UC09: Inativar ingrediente
 ## UC10: Visualizar estoque de ingredientes
 ---
 ## 👨‍🍳 Módulo 4: Gestão de Receitas e Custos
 
-## UC15: Definir ficha técnica da receita 
+## UC15: Definir ficha técnica da receita
 ## UC16: Editar ficha técnica
 ## UC17: Visualizar cálculo automático de custo de produção
 ---
