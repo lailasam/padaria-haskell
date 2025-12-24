@@ -291,7 +291,7 @@ Lista de produtos é exibida.
 ---
 ## 🧂 Módulo 3: Gestão de ingredientes
 
-## UC11: Cadastrar ingrediente
+### UC11: Cadastrar ingrediente
 
 **Descrição:**
 Permite registrar as matérias-primas que serão utilizadas na produção.
@@ -326,7 +326,7 @@ Ingrediente disponível para ser vinculado a receitas e para registros de compra
 - RN13: O sistema deve oferecer uma lista pré-definida de unidades de medida para manter a padronização e facilitar cálculos futuros.
 - RN14: O valor do estoque mínimo deve ser obrigatoriamente maior ou igual a zero.
   
-## UC12: Editar ingrediente
+### UC12: Editar ingrediente
 
 **Descrição:**
 Permite alterar dados básicos do insumo ou ajustar o nível de estoque mínimo.
@@ -351,7 +351,7 @@ Informações do ingrediente atualizadas na tela de gestão de insumos.
 - FA01 – Cancelar edição
   - O gerente clica em "Cancelar" a qualquer momento e retorna à tela de gestão de insumos.
 
-## UC13: Inativar ingrediente
+### UC13: Inativar ingrediente
 
 **Descrição:**
 Impede que um ingrediente seja usado em novas produções ou compras sem apagar seu histórico.
@@ -378,7 +378,7 @@ Informações do ingrediente atualizadas na tela de gestão de insumos.
 **Regras de negócio:**
 - RN15: Um ingrediente não pode ser excluído fisicamente se já houver registros de movimentação de estoque ou se ele estiver vinculado a uma receita ativa. Ele deve ser apenas "Inativado".
   
-## UC14: Visualizar estoque de ingredientes
+### UC14: Visualizar estoque de ingredientes
 
 **Descrição:**
 Permite a consulta das quantidades físicas disponíveis de cada matéria-prima.
@@ -402,6 +402,29 @@ Informações dos ingredientes disponíveis na tela de gestão de insumos.
 ## 👨‍🍳 Módulo 4: Gestão de Receitas e Custos
 
 ## UC15: Definir ficha técnica da receita
+
+**Descrição:**
+Permite associar uma lista de ingredientes e suas respectivas quantidades a um produto.
+
+**Atores:**
+Padeiro.
+
+**Pré-condições:**
+O usuário do tipo padeiro deve estar autenticado no sistema; produtos e ingredientes já cadastrados.
+
+**Pós-condições:**
+Receita salva e vinculada ao produto; custo base calculado automaticamente.
+
+**Fluxo principal:**
+1. O padeiro acessa a tela de "Receitas".
+2. O padeiro clica em "Nova receita".
+3. O padeiro lista os ingredientes, quantidades e produto.
+4. O padeiro clica em "Salvar".
+
+**Fluxo alternativo:**
+- FA01 – Cancelar cadastro de receita.
+  - O padeiro clica em "Cancelar" a qualquer momento e retorna à tela de receitas.
+  
 ## UC16: Editar ficha técnica
 ## UC17: Visualizar cálculo automático de custo de produção
 ---
