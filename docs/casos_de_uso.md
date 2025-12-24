@@ -401,7 +401,7 @@ Informações dos ingredientes disponíveis na tela de gestão de insumos.
 ---
 ## 👨‍🍳 Módulo 4: Gestão de Receitas e Custos
 
-## UC15: Definir ficha técnica da receita
+### UC15: Definir ficha técnica da receita
 
 **Descrição:**
 Permite associar uma lista de ingredientes e suas respectivas quantidades a um produto.
@@ -425,24 +425,24 @@ Receita salva e vinculada ao produto; custo base calculado automaticamente.
 - FA01 – Cancelar cadastro de receita.
   - O padeiro clica em "Cancelar" a qualquer momento e retorna à tela de receitas.
   
-## UC16: Editar ficha técnica
-## UC17: Visualizar cálculo automático de custo de produção
+### UC16: Editar ficha técnica
+### UC17: Visualizar cálculo automático de custo de produção
 ---
 ## 📦 Módulo 5: Produção e Inventário
 
-## UC18: Registrar entrada de mercadoria
-## UC19: Registrar lote de produção
-## UC20: Registrar perda ou desperdício
+### UC18: Registrar entrada de mercadoria
+### UC19: Registrar lote de produção
+### UC20: Registrar perda ou desperdício
 ---
 ## 🛒 Módulo 6: Ponto de Venda
 
-## UC21: Abrir caixa 
-## UC22: Realizar venda
-## UC23: Cancelar venda
-## UC24: Fechar caixa
+### UC21: Abrir caixa 
+### UC22: Realizar venda
+### UC23: Cancelar venda
+### UC24: Fechar caixa
 ---
 ## 📊 Módulo 7: Relatórios Gerenciais
 
-## UC25: Gerar relatório de vendas por período
-## UC26: Gerar relatório de produção e desperdício
-## UC27: Visualizar insights de lucratividade e tendências
+### UC25: Gerar relatório de vendas por período
+### UC26: Gerar relatório de produção e desperdício
+### UC27: Visualizar insights de lucratividade e tendências
