@@ -291,7 +291,7 @@ Lista de produtos é exibida.
 ---
 ## 🧂 Módulo 3: Gestão de ingredientes
 
-## UC07: Cadastrar ingrediente
+## UC11: Cadastrar ingrediente
 
 **Descrição:**
 Permite registrar as matérias-primas que serão utilizadas na produção.
@@ -326,9 +326,78 @@ Ingrediente disponível para ser vinculado a receitas e para registros de compra
 - RN13: O sistema deve oferecer uma lista pré-definida de unidades de medida para manter a padronização e facilitar cálculos futuros.
 - RN14: O valor do estoque mínimo deve ser obrigatoriamente maior ou igual a zero.
   
-## UC08: Editar ingrediente
-## UC09: Inativar ingrediente
-## UC10: Visualizar estoque de ingredientes
+## UC12: Editar ingrediente
+
+**Descrição:**
+Permite alterar dados básicos do insumo ou ajustar o nível de estoque mínimo.
+
+**Atores:**
+Gerente.
+
+**Pré-condições:**
+O usuário do tipo gerente deve estar autenticado no sistema.
+
+**Pós-condições:**
+Informações do ingrediente atualizadas na tela de gestão de insumos.
+
+**Fluxo principal:**
+1. O gerente acessa a tela de "Gestão de Insumos".
+2. O gerente clica em um ingrediente.
+3. O gerente clica em "Editar".
+4. O gerente altera os dados desejados.
+5. O gerente clica em "Salvar".
+
+**Fluxo alternativo:**
+- FA01 – Cancelar edição
+  - O gerente clica em "Cancelar" a qualquer momento e retorna à tela de gestão de insumos.
+
+## UC13: Inativar ingrediente
+
+**Descrição:**
+Impede que um ingrediente seja usado em novas produções ou compras sem apagar seu histórico.
+
+**Atores:**
+Gerente.
+
+**Pré-condições:**
+O usuário do tipo gerente deve estar autenticado no sistema.
+
+**Pós-condições:**
+Informações do ingrediente atualizadas na tela de gestão de insumos.
+
+**Fluxo principal:**
+1. O gerente acessa a tela de "Gestão de Insumos".
+2. O gerente clica em um ingrediente.
+3. O gerente clica em "Inativar".
+4. O gerente clica em "Confirmar".
+
+**Fluxo alternativo:**
+- FA01 – Cancelar inativação
+  - O gerente clica em "Cancelar" a qualquer momento e retorna à tela de gestão de insumos.
+
+**Regras de negócio:**
+- RN15: Um ingrediente não pode ser excluído fisicamente se já houver registros de movimentação de estoque ou se ele estiver vinculado a uma receita ativa. Ele deve ser apenas "Inativado".
+  
+## UC14: Visualizar estoque de ingredientes
+
+**Descrição:**
+Permite a consulta das quantidades físicas disponíveis de cada matéria-prima.
+
+**Atores:**
+Gerente, padeiro.
+
+**Pré-condições:**
+O usuário deve estar autenticado no sistema.
+
+**Pós-condições:**
+Informações dos ingredientes disponíveis na tela de gestão de insumos.
+
+**Fluxo principal:**
+1. O usuário acessa a tela de "Gestão de Insumos".
+2. O usuário visualiza lista de ingredientes.
+
+**Regras de negócio:**
+- RN16: Ingredientes cujo saldo atual seja menor ou igual ao estoque mínimo definido devem ser destacados visualmente para sinalizar necessidade de compra.
 ---
 ## 👨‍🍳 Módulo 4: Gestão de Receitas e Custos
 
