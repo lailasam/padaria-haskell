@@ -424,19 +424,143 @@ Receita salva e vinculada ao produto; custo base calculado automaticamente.
 **Fluxo alternativo:**
 - FA01 – Cancelar cadastro de receita.
   - O padeiro clica em "Cancelar" a qualquer momento e retorna à tela de receitas.
-  
+
+  **Fluxo de exceções:**
+- FE01 – Campos obrigatórios em branco
+  - Ao tentar cadastrar uma receita deixando campos obrigatórios em branco, a mensagem de erro "Todos os campos obrigatórios devem ser preenchidos" aparece e o salvamento é impedido.
+    
 ### UC16: Editar ficha técnica
+
+**Descrição:**
+Permite o ajuste das proporções caso haja mudança na qualidade do insumo ou no modo de preparo.
+
+**Atores:**
+Padeiro.
+
+**Pré-condições:**
+O usuário do tipo padeiro deve estar autenticado no sistema.
+
+**Pós-condições:**
+Informações da receita atualizadas.
+
+**Fluxo principal:**
+1. O padeiro acessa a tela de "Receitas".
+2. O padeiro clica em uma receita.
+3. O padeiro clica em "Editar".
+4. O padeiro altera as informações desejadas.
+5. O padeiro clica em "Salvar".
+
+**Fluxo alternativo:**
+- FA01 – Cancelar edição de receita.
+  - O padeiro clica em "Cancelar" a qualquer momento e retorna à tela de receitas.
+    
 ### UC17: Visualizar cálculo automático de custo de produção
+
+**Descrição:**
+Demonstração financeira do impacto da receita no caixa da padaria.
+
+**Atores:**
+Padeiro, gerente.
+
+**Pré-condições:**
+O usuário deve estar autenticado no sistema.
+
+**Pós-condições:**
+Custo de todos os produtos fica disponível.
+
+**Fluxo principal:**
+1. O usuário acessa a tela de "Receitas".
+2. O usuário clica em uma receita.
+3. O usuário visualiza o custo.
 ---
 ## 📦 Módulo 5: Produção e Inventário
 
 ### UC18: Registrar entrada de mercadoria
+
+**Descrição:**
+Registro de novos insumos que chegam dos fornecedores para abastecer o estoque.
+
+**Atores:**
+Padeiro, gerente.
+
+**Pré-condições:**
+O usuário deve estar autenticado no sistema.
+
+**Pós-condições:**
+Quantidade do insumo é atualizada.
+
+**Fluxo principal:**
+1. O usuário acessa a tela de "Gestão de Insumos".
+2. O usuário clica em um ingrediente.
+3. O usuário digita a quantidade recebida.
+4. O usuário clica em "Salvar".
+
+**Fluxo alternativo:**
+- FA01 – Cancelar registro de novos insumos.
+  - O usuário clica em "Cancelar" a qualquer momento e retorna à tela de gestão de insumos.
+
+**Regras de negócio:**
+- RN17: Apenas o Gerente pode editar o preço de custo, mas o Padeiro pode registrar a quantidade física recebida.
+
 ### UC19: Registrar lote de produção
+
+**Descrição:**
+O Padeiro informa o que produziu e o sistema gerencia a conversão de estoque.
+
+**Atores:**
+Padeiro.
+
+**Pré-condições:**
+O usuário do tipo padeiro deve estar autenticado no sistema; receita cadastrada; saldo de ingredientes em estoque.
+
+**Pós-condições:**
+Estoque de ingredientes diminui e estoque de produtos aumenta.
+
+**Fluxo principal:**
+1. O padeiro acessa a tela de "Catálogo de produtos".
+2. O padeiro clica em um produto.
+3. O padeiro digita a quantidade produzida.
+4. O padeiro clica em "Salvar".
+
+**Fluxo de exceções:**
+- FE01 – Estoque insuficiente.
+  - O usuário tenta realizar o registro estando com estoque insuficiente, então recebe a mensagem de erro "Estoque insuficiente" e o salvamento é impedido.
+
+**Regras de negócio:**
+- RN18: Toda produção deve gerar um registro de lote para rastreabilidade de validade.
+- RN19: O lote de produção só é registrado se o estoque for suficiente.
+  
 ### UC20: Registrar perda ou desperdício
+
+**Descrição:**
+Permite informar itens que não podem ser vendidos (queimados, estragados).
+
+**Atores:**
+Padeiro, vendedor.
+
+**Pré-condições:**
+O usuário deve estar autenticado no sistema; produto deve estar cadastrado.
+
+**Pós-condições:**
+Estoque de produtos diminui.
+
+**Fluxo principal:**
+1. O usuário acessa a tela de "Catálogo de produtos".
+2. O usuário clica em um produto.
+3. O usuário digita a quantidade desperdiçada.
+4. O usuário clica em "Salvar".
+
+**Fluxo de exceções:**
+- FE01 – Quantidade desperdiçada maior que a produzida.
+  - O usuário tenta registrar uma quantidade de produtos desperdiçados maior que a produzida, então recebe a mensagem de erro "Quantidade incompatível" e o salvamento é impedido.
+
+**Regras de negócio:**
+- RN20: A quantidade desperdiçada deve ser menor ou igual que o total produzido.
 ---
 ## 🛒 Módulo 6: Ponto de Venda
 
 ### UC21: Abrir caixa 
+
 ### UC22: Realizar venda
 ### UC23: Cancelar venda
 ### UC24: Fechar caixa
