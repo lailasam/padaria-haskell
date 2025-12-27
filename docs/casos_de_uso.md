@@ -561,12 +561,95 @@ Estoque de produtos diminui.
 
 ### UC21: Abrir caixa 
 
-### UC22: Realizar venda
-### UC23: Cancelar venda
-### UC24: Fechar caixa
----
-## 📊 Módulo 7: Relatórios Gerenciais
+**Descrição:**
+Registro do valor inicial de troco (fundo de caixa) para iniciar as operações do dia ou do turno.
 
-### UC25: Gerar relatório de vendas por período
-### UC26: Gerar relatório de produção e desperdício
-### UC27: Visualizar insights de lucratividade e tendências
+**Atores:**
+Vendedor, gerente.
+
+**Pré-condições:**
+O usuário deve estar autenticado no sistema; o caixa deve estar no status "Fechado".
+
+**Pós-condições:**
+Caixa alterado para status "Aberto"; Sistema pronto para registrar vendas.
+
+**Fluxo principal:**
+1. O usuário acessa o menu "Caixa".
+2. O usuário digita o valor de abertura (troco inicial).
+3. O usuário clica em "Confirmar".
+
+**Fluxo alternativo:**
+- FA01 – Reutilizar saldo anterior
+  - O sistema sugere o valor de fechamento do dia anterior como saldo inicial.
+
+**Regras de negócio:**
+- RN21: Não é possível realizar vendas enquanto o caixa não for formalmente aberto.
+  
+### UC22: Realizar venda
+
+**Descrição:**
+Registro da saída de produtos e recebimento de valores. É o ponto onde o estoque de produtos é diminuído.
+
+**Atores:**
+Vendedor.
+
+**Pré-condições:**
+O usuário do tipo vendedor deve estar autenticado no sistema; caixa aberto; existência de saldo de produtos em estoque.
+
+**Pós-condições:**
+Registro da venda gerado; atualização do saldo do caixa; baixa no estoque de produtos.
+
+**Fluxo principal:**
+1. O usuário busca o produto por nome ou identificador.
+2. O usuário informa a quantidade e adiciona ao carrinho virtual.
+3. O usuário seleciona a forma de pagamento (Dinheiro, Cartão ou PIX).
+4. O usuário finaliza a venda.
+
+**Fluxo de exceções:**
+- FE01 – Estoque insuficiente
+  - É exibido um alerta de estoque insuficiente e não é possível prosseguir com a venda.
+
+### UC23: Cancelar venda
+
+**Descrição:**
+Estorno de uma transação realizada indevidamente.
+
+**Atores:**
+Vendedor.
+
+**Pré-condições:**
+Venda deve estar registrada no turno atual.
+
+**Pós-condições:**
+A venda é cancelada e o valor do caixa diminui.
+
+**Fluxo principal:**
+1. O usuário acessa o histórico de vendas.
+2. O usuário seleciona uma venda.
+3. O usuário clica em "Cancelar".
+4. O usuário digita o motivo.
+5. O usuário clica em "Solicitar cancelamento".
+
+**Regras de negócio:**
+- RN22: Todo cancelamento deve obrigatoriamente ter um motivo registrado para fins de auditoria.
+- RN23: Somente o usuário do tipo gerente pode aprovar o cancelamento.
+  
+### UC24: Fechar caixa
+**Descrição:**
+Conferência financeira e encerramento das atividades do turno.
+
+**Atores:**
+Vendedor.
+
+**Pré-condições:**
+O caixa deve estar "Aberto".
+
+**Pós-condições:**
+O caixa é fechado e o histórico de vendas é registrado.
+
+**Fluxo principal:**
+1. O usuário acessa o Caixa.
+2. O usuário clica em "Solicitar fechamento".
+
+**Regras de negócio:**
+- RN24: O fechamento é aprovado pelo gerente após a conferência dos valores.
